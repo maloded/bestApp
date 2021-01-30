@@ -3,7 +3,7 @@ import './App.css';
 const App = () => {
   return (
     <div>
-     simple hdaoisdgsdjzgliuegiahegfuasidfhgalizhfaerjfiseef0ajguqahvlaheofjiedjidikcho
+     simple
      </div>
   );
 }
