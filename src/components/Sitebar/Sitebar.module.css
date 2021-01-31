@@ -1,0 +1,4 @@
+.sitebar {
+    grid-area: s;
+    background: blue;
+}
