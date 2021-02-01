@@ -1,0 +1,19 @@
+.dialogs_wrapper {
+    display: grid;
+    height: 100%;
+	grid-template-areas: 
+    "m d"
+    "i d";
+	grid-template-rows:1fr 100px;
+	grid-template-columns: 2fr 1fr;
+}
+
+.dialogs {
+    grid-area: d;
+    background-color: #345;
+}
+
+.messages {
+    grid-area: m;
+    background-color: #876;
+}

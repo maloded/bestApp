@@ -4,10 +4,15 @@ import classes from './Posts.module.css';
 const Posts = (props) => {
     return (
         <div>
-            <img src="2" alt="img"/>
-            <span>
-                like
-            </span>
+            <div>
+                <img src="2" alt="img"/>
+            </div>
+            <div>
+                {props.text}
+            </div>
+            <div>
+            {props.likesCount + ' likes'}
+            </div>
         </div>       
     );
 }
