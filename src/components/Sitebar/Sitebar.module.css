@@ -1,4 +1,5 @@
 .sitebar {
     grid-area: s;
     background: blue;
+    padding: 25px;
 }

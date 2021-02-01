@@ -1,10 +1,16 @@
 import React from 'react';
 import classes from './Content.module.css';
+import Dialogs from './Dialogs/Dialogs';
+import Profile from './Profile/Profile';
+import Users from './Users/Users';
+import {Route} from 'react-router-dom';
 
 const Content = (props) => {
     return (
         <div className={classes.content}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci beatae voluptas eos debitis consequatur ipsa, quaerat aspernatur. Ab maxime aliquid perspiciatis. Culpa doloremque accusantium modi ratione quia dicta molestiae assumenda.
+            <Route path='/profile' component={Profile} />
+            <Route path='/dialogs' component={Dialogs} />
+            <Route path='/users' component={Users} />
         </div>
     );
 }
