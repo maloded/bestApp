@@ -8,9 +8,9 @@ import {Route} from 'react-router-dom';
 const Content = (props) => {
     return (
         <div className={classes.content}>
-            <Route path='/profile' component={Profile} />
-            <Route path='/dialogs' component={Dialogs} />
-            <Route path='/users' component={Users} />
+            <Route path='/profile' render={ () => <Profile state={props.state.profilePage.posts} />} />
+            <Route path='/dialogs' render={ () => <Dialogs state={props.state.dialogsPage} />} />
+            <Route path='/users' render={ () => <Users />} />
         </div>
     );
 }
