@@ -6,10 +6,13 @@ import Users from './Users/Users';
 import {Route} from 'react-router-dom';
 
 const Content = (props) => {
+
+    
     return (
         <div className={classes.content}>
-            <Route path='/profile' render={ () => <Profile state={props.state.profilePage.posts} />} />
-            <Route path='/dialogs' render={ () => <Dialogs state={props.state.dialogsPage} />} />
+            <Route path='/profile' render={ () => <Profile profilePage={props.state.profilePage} 
+            dispatch={props.dispatch}  />} />
+            <Route path='/dialogs' render={ () => <Dialogs dialogsPage={props.state.dialogsPage} />} />
             <Route path='/users' render={ () => <Users />} />
         </div>
     );

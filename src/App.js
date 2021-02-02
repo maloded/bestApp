@@ -8,7 +8,7 @@ const App = (props) => {
 		<div className="app-wrapper">
 			<Header />
 			<Sitebar />
-			<Content state={props.state} />
+			<Content state={props.state} dispatch={props.dispatch} />
 		</div>
 	);
 }
