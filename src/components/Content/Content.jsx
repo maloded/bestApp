@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Content.module.css';
 import Dialogs from './Dialogs/Dialogs';
 import Profile from './Profile/Profile';
-import Users from './Users/Users';
+import UsersContainer from './Users/UsersContainer';
 import {Route} from 'react-router-dom';
 
 const Content = (props) => {
@@ -10,10 +10,9 @@ const Content = (props) => {
     
     return (
         <div className={classes.content}>
-            <Route path='/profile' render={ () => <Profile profilePage={props.state.profilePage} 
-            dispatch={props.dispatch}  />} />
-            <Route path='/dialogs' render={ () => <Dialogs dialogsPage={props.state.dialogsPage} />} />
-            <Route path='/users' render={ () => <Users />} />
+            <Route path='/profile' render={ () => <Profile />} />
+            {/* <Route path='/dialogs' render={ () => <Dialogs store={props.store} />} /> */}
+            <Route path='/users' render={ () => <UsersContainer />} />
         </div>
     );
 }
