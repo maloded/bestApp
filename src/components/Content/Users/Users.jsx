@@ -1,44 +1,39 @@
 import React from 'react';
-import { setUsersAC } from '../../../redux/users-reducer';
 import classes from './Users.module.css'
+import Photo from '../../../assets/images/kisspng-user-logo-information-service-design-5ba34f88e63387.4679724515374293849429.png';
+import * as axios from 'axios';
 
-const Users = (props) => {
-
-    if (props.users.length === 0) {
-        props.setUsers([
-            {id: 1, photoUrl: 'https://wsjournal.ru/wp-content/uploads/2016/08/doc63bprnt2j1416ghtqit_800_480-300x215.jpg', 
-            followed: true, fullName: 'Dmitry', status: 'I am a boss', location: {city: 'Minsk', country: 'Belarus'}},
-            {id: 2, photoUrl: 'https://wsjournal.ru/wp-content/uploads/2016/08/374758_2_1362480463-300x188.jpg', 
-            followed: false, fullName: 'Sasha', status: 'I am a boss too', location: {city: 'Moscow', country: 'Russia'}},
-            {id: 3, photoUrl: 'https://wsjournal.ru/wp-content/uploads/2016/08/Evolyutsiya-Mark-Uolberg-1024x683-300x200.jpg', 
-            followed: true, fullName: 'Dimych', status: 'I am so pretty', location: {city: 'Dnepr', country: 'Ukraine'}},
-            {id: 4, photoUrl: 'https://wsjournal.ru/wp-content/uploads/2016/08/8b263aefbd910b902805a6cb3ff9c6d5-300x201.jpg ', 
-            followed: true, fullName: 'Andrew', status: 'I like football!', location: {city: 'Kiev', country: 'Ukraine'}}
-        ])
+class Users extends React.Component {
+    componentDidMount() {
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(Response => {
+            this.props.setUsers(Response.data.items)
+        });
     }
 
-    return (
-        <div>
-            {
-                props.users.map( u => <div key={u.id}>
-                    <div>
-                        <img src={u.photoUrl} alt="img"/>
-                    </div>
-                    <div>
-                        <button>Follow</button>
-                    </div>
-                    <div>
-                        <ul>
-                            <li>{u.fullName}</li>
-                            <li>{u.status}</li>
-                            <li>{u.location.city}</li>
-                            <li>{u.location.country}</li>
-                        </ul>
-                    </div>
-                </div>)
-            }
-        </div>
-    );
+    render() {
+        return (
+            <div>
+                {
+                    this.props.users.map( u => <div key={u.id}>
+                        <div>
+                            <img src={u.photos.small != null ? u.photos.small : Photo} alt="img" className={classes.smallPhoto} />
+                        </div>
+                        <div>
+                            {u.followed 
+                            ? <button onClick={ () => {this.props.unfollow(u.id)} }>Unfollow</button> 
+                            : <button onClick={ () => {this.props.follow(u.id)} }>Follow</button>}
+                        </div>
+                        <div>
+                            <ul>
+                                <li>{u.name}</li>
+                                <li>{u.status != null ? u.status : "no status"}</li>
+                            </ul>
+                        </div>
+                    </div>)
+                }
+            </div>
+        );
+    }
 }
 
-export default Users;
+    export default Users;

@@ -13,6 +13,7 @@ const usersReducer = (state = initialState, action) => {
                 if (u.id === action.userId) {
                     return {...u, followed: true}
                 }
+                return u;
             })}
         }
         case UNFOLLOW: {
@@ -20,10 +21,11 @@ const usersReducer = (state = initialState, action) => {
                 if (u.id === action.userId) {
                     return {...u, followed: false}
                 }
+                return u;
             })}
         }
         case SET_USERS: {
-            return {...state, users: [...state.users, ...action.users]}
+            return {...state, users: action.users}
         }   
         default:
             return state;
