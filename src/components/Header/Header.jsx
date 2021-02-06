@@ -1,9 +1,15 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import classes from './Header.module.css';
 
 const Header = (props) => {
     return (
-        <div className={classes.header}>Lorem ipsum dolor sit amet consectetur adipisicing elit. A, illo unde? Quidem hic numquam ipsa magnam nesciunt, eaque magni. Laborum quo eveniet nihil illo nobis adipisci aliquam alias harum sunt?</div>
+        <header>
+                <div className={classes.login}>
+                    {props.isAuth ? props.login 
+                    : <NavLink to={'/login'}>Login</NavLink>}
+                </div>
+        </header>
     );
 }
 

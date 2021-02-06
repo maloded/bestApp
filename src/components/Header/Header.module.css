@@ -1,4 +1,9 @@
-.header {
+header {
     grid-area: h;
     background-color: red;
+}
+
+.login {
+    display: flex;
+    justify-content: flex-end;
 }

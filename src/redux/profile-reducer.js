@@ -1,5 +1,6 @@
 let ADD_POST = 'ADD-POST';
-let UPDATE_POST_TEXT = 'UPDATE-POST-TEXT'
+let UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
+let SET_UDER_PROFILE = 'SET-UDER-PROFILE';
 
 let initialState = {
     posts: [
@@ -17,6 +18,9 @@ const profileReducer = (state = initialState, action) => {
         case UPDATE_POST_TEXT: {
             return {...state, newPostText: action.text};
         }   
+        case SET_UDER_PROFILE: {
+            return {...state, profile: action.profile}
+        }
         default:
             return state;
     }
@@ -24,6 +28,7 @@ const profileReducer = (state = initialState, action) => {
 
 export const addPostAC = () => ({type: ADD_POST})
 export const updatePostTextAC = (text) => ({type: UPDATE_POST_TEXT, text})
+export const setUserProfile = (profile) => ({type: SET_UDER_PROFILE, profile})
 
 export default profileReducer;
 
