@@ -1,12 +1,10 @@
 import React from 'react';
-import classes from './Profile.module.css';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
-import MyPostContainer from './MyPost/MyPostContainer';
+import MyPost from './MyPost/MyPost';
 import { connect } from 'react-redux';
-import { setUserProfile } from '../../../redux/profile-reducer';
+import { setUserProfile, addPost, updatePostText, getProfile } from '../../../redux/profile-reducer';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
-import { profileAPI } from '../../../API/api';
 
 class ProfileContainer extends React.Component {
 
@@ -15,26 +13,31 @@ class ProfileContainer extends React.Component {
         if (!userId) {
             userId = 1064;
         }
-        profileAPI.getProfile(userId).then(data => {
-            this.props.setUserProfile(data);
-        });
+        this.props.getProfile(userId)
     }
 
     render() {
         return (
             <div>
-                <ProfileInfo {...this.props} />
-                <MyPostContainer />
+                <ProfileInfo profile={this.props.profile} 
+                setUserProfile={this.props.setUserProfile} />
+
+                <MyPost posts={this.props.posts}
+                newPostText={this.props.newPostText}
+                addPost={this.props.addPost}
+                updatePostText={this.props.updatePostText} />
             </div>       
         );
     }
 }
 
 let mapStateToProps = (state) => ({
-    profile: state.profilePage.profile
+    profile: state.profilePage.profile,
+    posts: state.profilePage.posts,
+    newPostText: state.profilePage.newPostText
 })
 
 export default compose(
-    connect(mapStateToProps, {setUserProfile}),
+    connect(mapStateToProps, {setUserProfile, addPost, updatePostText, getProfile}),
     withRouter
 )(ProfileContainer);
