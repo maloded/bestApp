@@ -1,15 +1,16 @@
 import React from 'react';
 import classes from './Login.module.css';
 import {Field, reduxForm} from 'redux-form';
-
+import { Input } from '../../common/FormsControl/FormsControl';
+import { required } from '../../../utilities/validators';
 const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field component={'input'} name={'login'} placeholder={'Login'} />
+                <Field component={Input} validate={[required]} name={'login'} placeholder={'Login'} />
             </div>
             <div>
-                <Field component={'input'} name={"password"} placeholder={'Password'} />
+                <Field component={Input} validate={[required]} name={"password"} placeholder={'Password'} />
             </div>
             <div>
                 <Field component={'input'} name={'remeberMe'} type={'checkbox'} />remember me
