@@ -3,17 +3,18 @@ import classes from './Login.module.css';
 import {Field, reduxForm} from 'redux-form';
 import { Input } from '../../common/FormsControl/FormsControl';
 import { required } from '../../../utilities/validators';
+
 const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field component={Input} validate={[required]} name={'login'} placeholder={'Login'} />
+                <Field component={Input} validate={[required]} name='email' placeholder='Email' />
             </div>
             <div>
-                <Field component={Input} validate={[required]} name={"password"} placeholder={'Password'} />
+                <Field component={Input} validate={[required]} name='password' type='password' placeholder='Password' />
             </div>
             <div>
-                <Field component={'input'} name={'remeberMe'} type={'checkbox'} />remember me
+                <Field component='input' name='remeberMe' type='checkbox' />remember me
             </div>
             <div>
                 <button>Login</button>
@@ -22,20 +23,6 @@ const LoginForm = (props) => {
     )
 }
 
-const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
-
-const Login = (props) => {
-
-    const onSubmit = (formData) => {
-        console.log(formData);
-    }
-
-    return (
-        <div>
-            <h2>Login</h2>
-            <LoginReduxForm onSubmit={onSubmit} />
-        </div>
-    )
-}
+const Login = reduxForm({form: 'login'})(LoginForm)
 
 export default Login;

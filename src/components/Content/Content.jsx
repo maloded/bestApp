@@ -4,7 +4,7 @@ import DialogsContainer from './Dialogs/DialogsContainer';
 import ProfileContainer from './Profile/ProfileContainer';
 import UsersContainer from './Users/UsersContainer';
 import {Route} from 'react-router-dom';
-import Login from './Login/Login';
+import LoginContainer from './Login/LoginContainer';
 
 const Content = (props) => {
 
@@ -14,7 +14,7 @@ const Content = (props) => {
             <Route path='/profile/:userId?' render={ () => <ProfileContainer />} />
             <Route path='/dialogs' render={ () => <DialogsContainer />} />
             <Route path='/users' render={ () => <UsersContainer />} />
-            <Route path='/login' render={ () => <Login />} />
+            <Route path='/login' render={ () => <LoginContainer />} />
         </div>
     );
 }
