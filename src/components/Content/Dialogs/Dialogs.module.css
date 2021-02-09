@@ -17,3 +17,8 @@
     grid-area: m;
     background-color: #876;
 }
+
+.input {
+    grid-area: i;
+    background-color: #ff1;
+}

@@ -1,3 +1,5 @@
+const ADD_MESSAGE = 'ADD-MESSAGE'
+
 let initialState = {
     dialogs: [
         {id: 1, name: 'Sveta'},
@@ -11,8 +13,18 @@ let initialState = {
 }
 
 const dialogsReducer = (state = initialState, action) => {
-    return state;
+    switch (action.type ) {
+        case ADD_MESSAGE: {
+            return {
+                ...state, messages: [...state.messages, {id: 3, message: action.newMessage}]
+            }
+        }
+    default:
+        return state;
+    }
 }
+
+export const addMessage = (newMessage) => ({type: ADD_MESSAGE, newMessage});
 
 export default dialogsReducer;
 

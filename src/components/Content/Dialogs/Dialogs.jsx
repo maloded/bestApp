@@ -2,12 +2,16 @@ import React from 'react';
 import classes from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import MessageItem from './MessageItem/MessageItem';
-import InputMessage from './InputMessage/InputMessage';
+import InputMessageForm from './InputMessageForm/InputMessageForm';
 
 const Dialogs = (props) => {
 
-    let dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem id={d.id} name={d.name} />)
-    let messagesElements =props.dialogsPage.messages.map(m => <MessageItem id={m.id} message={m.message}/>)
+    let onAddMessage = (value) => {
+        props.addMessage(value.newMessageText)
+    }
+
+    let dialogsElements = props.dialogs.map(d => <DialogItem id={d.id} name={d.name} />)
+    let messagesElements = props.messages.map(m => <MessageItem id={m.id} message={m.message}/>)
 
     return (
         <div className={classes.dialogs_wrapper}>
@@ -17,7 +21,9 @@ const Dialogs = (props) => {
             <div className={classes.messages}>
                 { messagesElements }
             </div>
-            <InputMessage />
+            <div  className={classes.input}>
+                <InputMessageForm onSubmit={onAddMessage} />
+            </div>
         </div>      
     );
 }
